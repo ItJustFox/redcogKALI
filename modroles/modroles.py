@@ -95,13 +95,6 @@ class ModRoles(commands.Cog):
             return
         if not await self._assign_checks(ctx, member, role):
             return
-        if role >= ctx.guild.me.top_role:
-            await ctx.send(
-                f"I can't give {role.name} to {member.display_name}"
-                " because that role is higher than or equal to my highest role"
-                " in the Discord hierarchy."
-            )
-            return
         try:
             await member.add_roles(role)
         except discord.Forbidden:
